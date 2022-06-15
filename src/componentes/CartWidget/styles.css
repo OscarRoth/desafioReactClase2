@@ -1,0 +1,12 @@
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.CursorPointer {
+    cursor: pointer;    
+}
+
+.CursorPointer:hover {
+    opacity: 0.5;
+}
