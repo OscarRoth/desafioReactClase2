@@ -1,0 +1,19 @@
+.container-contador {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .container-btn-carrito {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    width: 140px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 40px auto;
+  }
+  .counter {
+    padding: 10px 20px;
+  }
