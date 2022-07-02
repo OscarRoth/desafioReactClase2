@@ -1,0 +1,18 @@
+.imgProductSingle {
+    height: 500px;
+    width: 100%;
+}
+.contImgSingleProd {
+        border: 1px solid #ddd;
+        padding: 5px;
+        border-radius: 5px;
+}
+.descriptionSingleDetail {
+    color: #ccc;
+    margin: 10px 0;
+}
+.contImgSingleProd:hover {
+    cursor: pointer;
+    background: #ebe9fc;
+    opacity: 0.8;
+}

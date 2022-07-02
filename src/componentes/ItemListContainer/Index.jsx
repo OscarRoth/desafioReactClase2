@@ -12,6 +12,7 @@ const ItemListContainer = ({ greeting }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    //la promesa y el async await están dentro del hook
     const promesa = new Promise((resolve) => {
       setTimeout(() => {
         resolve("https://fakestoreapi.com/products");
