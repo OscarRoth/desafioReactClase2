@@ -10,9 +10,10 @@
 .descriptionSingleDetail {
     color: #ccc;
     margin: 10px 0;
+    font-size: 1rem;
 }
 .contImgSingleProd:hover {
     cursor: pointer;
-    background: #ebe9fc;
+    background: #7f7f7f;
     opacity: 0.8;
 }
