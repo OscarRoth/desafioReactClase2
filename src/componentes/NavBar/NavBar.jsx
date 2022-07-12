@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Shop } from "../../context/ShopContext";
 import CardWidget from "../CartWidget/Index";
 //import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const value = useContext(Shop);
+
+  console.log(value);
+
   return (
     <>
       <Navbar bg="primary" variant="dark">
