@@ -1,47 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
+import { Shop } from "../../context/ShopContext";
+import ButtonCount from "../ButtonCount/ButtonCount";
 import "./styles.css";
 
-//este itemdeatail va a tener todos los datos del producto, de uno solo, el id, img, etc, se puede pasar todo el objeto
 const ItemDetail = ({ product }) => {
-  const [cantidadSuma, setCantidadSuma] = useState();
-
   const navigate = useNavigate();
 
-  const handleConfirm = (quantity) => {
-    setCantidadSuma(quantity);
+  product.stock = 10;
+  const [qtyAdded, setQtyAdded] = useState(0);
+
+  const { addItem } = useContext(Shop);
+
+  const handleConfirm = (qty) => {
+    setQtyAdded(qty);
   };
 
-  const handleFinalizar = () => {
-    navigate("/Cart");
+  const handleTerminate = () => {
+    //addItem(product, qtyAdded);
+    navigate("/cart");
   };
 
-  console.log(cantidadSuma);
+  console.log(qtyAdded);
+
   return (
-    <div className="container">
-      <div className="row mt-5">
-        <div className="col-md-5 offset-md-3">
-          <h1>{product.title}</h1>
-          <div className="contImgSingleProd">
-            <img
-              src={product.image}
-              alt={product.tittle}
-              className="imgProductSingle"
-            />
-          </div>
-          <p className="descriptionSingleDetail">{product.description}</p>
-        </div>
-        <div>
-          {!cantidadSuma ? (
-            <ItemCount value={1} stock={10} onAdd={handleConfirm} />
-          ) : (
-            <button className="btn btn-primary" onClick={handleFinalizar}>
-              Finalizar compra
-            </button>
-          )}
-        </div>
-      </div>
+    <div className="container-detail">
+      <h1>{product.title}</h1>
+      <img src={product.image} alt="product-detail" />
+      <p>{product.description}</p>
+      {!qtyAdded ? (
+        <ButtonCount onConfirm={handleConfirm} maxQuantity={product.stock} />
+      ) : (
+        <button onClick={handleTerminate}>Terminar compra</button>
+      )}
     </div>
   );
 };

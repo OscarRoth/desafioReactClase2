@@ -6,7 +6,7 @@ import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailCon
 import { BrowserRouter, Routes, Route } from  'react-router-dom';
 import { NotFound } from './componentes/NotFound/Index';
 import Cart from './componentes/Cart/Cart';
-//import ShopProvider, { Shop } from './context/ShopContext';
+import ShopProvider from './context/ShopContext';
 
 function App() {
   //definimos las rutas con su caminito y en cada ruta colocamos el elemento que vamos a renderizar
@@ -16,9 +16,8 @@ function App() {
   //clase 9 - se importa el componente cart y se routea
 
   return (
-    
-      <BrowserRouter>    
-      <div>      
+    <ShopProvider>
+      <BrowserRouter>
         <NavBar/>
         <Routes>        
           <Route path="/" element={<ItemListContainer/>}></Route>
@@ -27,8 +26,8 @@ function App() {
           <Route path="/*" element={<NotFound/>}></Route>          
           <Route path='/cart' element={<Cart/>}></Route>
         </Routes>
-      </div>    
-      </BrowserRouter>      
+      </BrowserRouter>
+    </ShopProvider>
   );
 }
 
