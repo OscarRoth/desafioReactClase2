@@ -1,26 +1,47 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const ButtonCount = ({ onConfirm, maxQuantity }) => {
-  const [value, setValue] = useState(1);
+const ButtonCount = ({ value, stock, onAdd }) => {
+  const [counter, setCounter] = useState(value);
 
-  const handleConfirm = () => {
-    if (value <= maxQuantity) {
-      onConfirm(value);
+  const increment = (e) => {
+    if (counter < stock) {
+      setCounter(counter + 1);
     } else {
-      alert("Value > maxQuantity");
+      e.preventDefault();
     }
   };
+
+  const decrement = (e) => {
+    if (counter <= value) {
+      e.preventDefault();
+    } else {
+      setCounter(counter - 1);
+    }
+  };
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-      }}
-    >
-      <button onClick={() => setValue((value) => value + 1)}>+</button>
-      <span>{value}</span>
-      <button onClick={() => setValue((value) => value - 1)}>-</button>
-      <button onClick={handleConfirm}>Confirm</button>
+    <div className="contenedor-botones">
+      <div className="d-flex justify-content-center align-items-center">
+        <button className="btn btn-success" onClick={increment}>
+          +
+        </button>
+        <span>{counter}</span>
+        <button className="btn btn-success" onClick={decrement}>
+          -
+        </button>
+      </div>
+      <div
+        style={{
+          margin: "0 auto",
+          width: "32%",
+        }}
+        className="justify-content-between align-items-center mt-2 mb-5"
+      >
+        <button className="btn btn-success" onClick={() => onAdd(counter)}>
+          agregar al carrito de compras
+        </button>
+      </div>
     </div>
   );
 };
